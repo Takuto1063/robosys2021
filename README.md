@@ -5,8 +5,7 @@
 
 ・数字6を入力した場合、赤色のLEDから順々にLEDを光らせる
 # 環境・使用器具
-・Ubuntu 18.04
-
+[Ubuntu 18.04]
 
 ・Raspberry Pi 4 
 
