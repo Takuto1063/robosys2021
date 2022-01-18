@@ -21,9 +21,9 @@
 
 （gpio25,21,22,23,26 - 抵抗 - LED - GND) 
 # 実行方法
-_インストール_
+**インストール**
 
-**以下の手順で操作を行う**
+[以下の手順で操作を行う]
 
 `$ git clone https://github.com/Takuto1063/robosys2021.git`
 
@@ -33,9 +33,9 @@ _インストール_
 
 `$ sudo chmod 666 /dev/myled0`
 
-_LEDの点灯・消灯_
+**LEDの点灯・消灯**
 
-**LEDをそれぞれ点灯させる**
+[LEDをそれぞれ点灯させる]
 
 `$ echo 1 > /dev/myled0`
 
@@ -47,15 +47,15 @@ _LEDの点灯・消灯_
 
 `$ echo 5 > /dev/myled0`
 
-**LEDを順々に点灯させる**
+[LEDを順々に点灯させる]
 
 `$ echo 6 > /dev/myled0`
 
-**LEDを消灯させる**
+[LEDを消灯させる]
 
 `$ echo > /dev/myled0`
 
-_アンインストール_
+**アンインストール**
 
 以下の手順で操作を行う
 
