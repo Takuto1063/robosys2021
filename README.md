@@ -23,7 +23,7 @@
 # 実行方法
 以下の手順で操作を行う
 
-$ git clone https://github.com/Takuto1063/robosys2021.git
+https://github.com/Takuto1063/robosys2021.git
 
 
 # 動画URL
