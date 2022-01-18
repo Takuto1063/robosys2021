@@ -25,6 +25,10 @@
 
 `$ git clone https://github.com/Takuto1063/robosys2021.git`
 
+`$ make`
+
+`$ sudo insmod myled.ko`
+
 `$ sudo rmmod myled`
 
 
