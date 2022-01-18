@@ -21,6 +21,10 @@
 
 （gpio25,21,22,23,26 - 抵抗 - LED - GND) 
 # 実行方法
+以下の手順で操作を行う
+
+$ git clone https://github.com/Takuto1063/robosys2021.git
+
 
 # 動画URL
 [https://youtu.be/v1frLeisvNY](https://youtu.be/v1frLeisvNY)
