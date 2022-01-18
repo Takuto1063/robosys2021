@@ -24,3 +24,5 @@
 
 # 動画URL
 [https://youtu.be/v1frLeisvNY](https://youtu.be/v1frLeisvNY)
+# ライセンス
+[GNU General Public License v3.0](https://github.com/Takuto1063/robosys2021/blob/main/COPYING)
