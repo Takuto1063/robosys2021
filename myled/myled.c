@@ -1,11 +1,15 @@
+//SPDX-License-Identifier:GPL-3.0:
+//  Copyright (C) 2021 Suzuki Takuto and Ryuichi Ueda.
+
 #include <linux/module.h>
 #include <linux/fs.h>
 #include <linux/cdev.h>
 #include <linux/device.h>
 #include <linux/uaccess.h> 
 #include <linux/io.h>
+#include <linux/delay.h>
 
-MODULE_AUTHOR("Ryuichi Ueda");
+MODULE_AUTHOR("Suzuki takuto and Ryuichi Ueda");
 MODULE_DESCRIPTION("driver for LED control");
 MODULE_LICENSE("GPL");
 MODULE_VERSION("0.0.1");
@@ -13,18 +17,73 @@ MODULE_VERSION("0.0.1");
 static dev_t dev;
 static struct cdev cdv;
 static struct class *cls = NULL;
-static volatile u32 *gpio_base = NULL; 
+static volatile u32 *gpio_base = NULL;
+
+static int led_gpio[5] = {25,22,23,26,21};
 
 static ssize_t led_write(struct file* filp, const char* buf, size_t count, loff_t* pos)
 {
                 char c;   //読み込んだ字を入れる変数
+		int m;
 		if(copy_from_user(&c,buf,sizeof(char)))
 			  return -EFAULT;
-//	printk(KERN_INFO "receive %c\n",c);
-                if(c == '0')
-		    gpio_base[10] = 1 << 25;
-		else if(c == '1')
-		    gpio_base[7] = 1 << 25;
+
+		if(c == '0'){
+
+			gpio_base[10] = 1 << 25;
+		        gpio_base[10] = 1 << 22;
+			gpio_base[10] = 1 << 23;
+			gpio_base[10] = 1 << 26;
+			gpio_base[10] = 1 << 21;
+
+		}else if(c == '1'){
+
+			gpio_base[7] = 1 << 25;
+
+		}else if(c == '2'){
+
+			gpio_base[7] = 1 << 22;
+
+		}else if(c == '3'){
+
+			gpio_base[7] = 1 << 23;
+
+		}else if(c == '4'){
+
+			gpio_base[7] = 1 << 26;
+
+		}else if(c == '5'){
+
+			gpio_base[7] = 1 << 21;
+
+		}else if(c == '6'){
+
+			for(m = 0; m < 3; m++){
+
+				gpio_base[7] = 1 << 25;
+				ssleep(1);
+				gpio_base[10] = 1 << 25;
+				ssleep(1);
+				gpio_base[7] = 1 << 22;
+				ssleep(1);
+				gpio_base[10] = 1 << 22;
+				ssleep(1);
+				gpio_base[7] = 1 << 23;
+				ssleep(1);
+				gpio_base[10] = 1 << 23;
+				ssleep(1);
+				gpio_base[7] = 1 << 26;
+				ssleep(1);
+				gpio_base[10] = 1 << 26;
+				ssleep(1);
+				gpio_base[7] = 1 << 21;
+				ssleep(1);
+				gpio_base[10] = 1 << 21;
+				ssleep(1);
+
+			}
+		}
+			
 		return 1; //読み込んだ文字数を返す（この場合はダミーの1）
 }
 
@@ -49,6 +108,7 @@ static struct file_operations led_fops = {
 static int __init init_mod(void) //カーネルモジュールの初期化
 {
 	int retval;
+
 	retval =  alloc_chrdev_region(&dev, 0, 1, "myled");
 	if(retval < 0){
 	        printk(KERN_ERR "alloc_chrdev_region failed.\n");
@@ -73,11 +133,18 @@ static int __init init_mod(void) //カーネルモジュールの初期化
 
 	gpio_base = ioremap_nocache(0xfe200000, 0xA0); //Pi4の場合は0xfe200000
 
-	const u32 led = 25;
-	const u32 index = led/10;
-	const u32 shift = (led%10)*3;
-	const u32 mask = ~(0x7 << shift);
-        gpio_base[index] = (gpio_base[index] & mask) | (0x1 << shift);
+	int n;
+
+	for(n = 0; n < 5; n++){
+
+	const u32 led = led_gpio[n];
+	const u32 led_index = led/10;
+	const u32 led_shift = (led%10)*3;
+	const u32 led_mask = ~(0x7 << led_shift);
+
+        gpio_base[led_index] = (gpio_base[led_index] & led_mask) | (0x1 << led_shift);
+
+	}
 
 	return 0;
 }

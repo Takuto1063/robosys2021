@@ -1,1 +1,1 @@
-cmd_/home/ubuntu/myled/myled.ko := ld -r  -EL  -maarch64elf  --build-id  -T ./scripts/module-common.lds -T ./arch/arm64/kernel/module.lds -o /home/ubuntu/myled/myled.ko /home/ubuntu/myled/myled.o /home/ubuntu/myled/myled.mod.o;  true
+cmd_/home/ubuntu/robosys2021/myled/myled.ko := ld -r  -EL  -maarch64elf  --build-id  -T ./scripts/module-common.lds -T ./arch/arm64/kernel/module.lds -o /home/ubuntu/robosys2021/myled/myled.ko /home/ubuntu/robosys2021/myled/myled.o /home/ubuntu/robosys2021/myled/myled.mod.o;  true
