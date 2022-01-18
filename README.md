@@ -19,4 +19,4 @@
 # 回路
 ![画像名](https://github.com/Takuto1063/robosys2021/blob/main/%E3%83%AD%E3%83%9C%E3%82%B7%E3%82%B9%E8%AA%B2%E9%A1%8C1.jpg)
 
-・（gpio25 - 抵抗 - LED - GND)・（gpio21 - 抵抗 - LED - GND)・（gpio26 - 抵抗 - LED - GND)・（gpio22 - 抵抗 - LED - GND)・（gpio23 - 抵抗 - LED - GND)
+（gpio25 - 抵抗 - LED - GND) （gpio21 - 抵抗 - LED - GND) （gpio26 - 抵抗 - LED - GND) （gpio22 - 抵抗 - LED - GND) （gpio23 - 抵抗 - LED - GND)
