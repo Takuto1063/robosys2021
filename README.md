@@ -1,2 +1,5 @@
-# robosys2021
-This is a kadai1 repository
+# robosys2021 kadai1
+ロボットシステム学の課題で作成・改良したデバイスドライバ
+##概要
+・数字1～5の入力に応じてLEDをそれぞれ光らせる
+・数字6を入力した場合、赤色のLEDから順々にLEDを光らせる
