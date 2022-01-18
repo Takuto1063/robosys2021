@@ -23,7 +23,7 @@
 # 実行方法
 以下の手順で操作を行う
 
-$ git clone https://github.com/Satoru-Negishi/robosys_devicedriver_2020-12.git
+`インラインコード`
 
 
 # 動画URL
